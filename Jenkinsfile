@@ -52,16 +52,15 @@ pipeline {
             }
             
         }
-        /*stage('Trivy'){
+        stage('Trivy'){
             steps{
                 sh 'trivy image --scanners vuln petclinic:0.1'
             }
         }
-    }*/
-    /*post{
+    }
+    post{
         always{
             sh 'docker logout'
         }
-    }*/
-}
+    }
 }
