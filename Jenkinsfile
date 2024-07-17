@@ -5,14 +5,10 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockertest')
     }
     stages {
-        stage('Build') {
+        stage('Build & Test') {
             steps {
                 sh '/usr/local/maven/bin/mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') { 
-            steps {
-                sh '/usr/local/maven/bin/mvn test' 
+                sh '/usr/local/maven/bin/mvn test'
             }
             post {
                 always {
@@ -25,7 +21,7 @@ pipeline {
                 dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'DP-Check'
             }
         }
-        stage("Build & SonarQube analysis") {
+        stage("SonarQube analysis") {
             agent any
             steps {
               withSonarQubeEnv('sq1') {
@@ -52,9 +48,9 @@ pipeline {
             }
             
         }
-        stage('Trivy'){
+        stage('Trivy Scan'){
             steps{
-                sh 'trivy image --scanners vuln petclinic:0.1'
+                sh 'trivy image --scanners vuln sunguyen88/petclinic:0.1'
             }
         }
     }
