@@ -39,7 +39,7 @@ pipeline {
               }
             }
         }
-        stage('Docker Build'){
+        /*stage('Docker Build'){
             steps{
                 sh 'docker build -t sunguyen88/petclinic:0.1'
             }
@@ -56,10 +56,10 @@ pipeline {
                 sh 'trivy image --scanners vuln petclinic:0.1'
             }
         }
-    }
-    post{
+    }*/
+    /*post{
         always{
             sh 'docker logout'
         }
-    }
+    }*/
 }
