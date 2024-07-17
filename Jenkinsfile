@@ -38,19 +38,19 @@ pipeline {
         }
         stage('Docker Build'){
             steps{
-                sh 'docker build . -t sunguyen88/petclinic:0.1'
+                sh 'docker build . -t sunguyen88/petclinic:latest -f Dockerfile'
             }
         }
         stage('Docker Push'){
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push sunguyen88/petclinic:0.1'
+                sh 'docker push sunguyen88/petclinic:latest'
             }
             
         }
         stage('Trivy Scan'){
             steps{
-                sh 'trivy image --scanners vuln sunguyen88/petclinic:0.1'
+                sh 'trivy image --scanners vuln sunguyen88/petclinic:latest'
             }
         }
     }
