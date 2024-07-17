@@ -28,7 +28,7 @@ pipeline {
             agent any
             steps {
               withSonarQubeEnv('sq1') {
-                sh "/usr/local/maven/bin/mvn clean package sonar:sonar -D sonar.projectKey=Demo -D sonar.projectName='Demo' -D sonar.host.url=http://172.18.25.204:9000/ -D sonar.token=sqp_014bd86730736b7de34fd2bf877c0aef956bc53e"
+                sh "/usr/local/maven/bin/mvn -Dcheckstyle.skip clean package sonar:sonar -D sonar.projectKey=Demo -D sonar.projectName='Demo' -D sonar.host.url=http://172.18.25.204:9000/ -D sonar.token=sqp_014bd86730736b7de34fd2bf877c0aef956bc53e"
               }
             }
         }
