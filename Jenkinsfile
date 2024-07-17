@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Docker Build'){
             steps{
-                sh 'docker build -t sunguyen88/petclinic:0.1'
+                sh 'docker build . -t sunguyen88/petclinic:0.1'
             }
         }
         /*stage('Docker Push'){
