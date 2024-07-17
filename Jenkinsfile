@@ -39,12 +39,12 @@ pipeline {
               }
             }
         }
-        /*stage('Docker Build'){
+        stage('Docker Build'){
             steps{
                 sh 'docker build -t sunguyen88/petclinic:0.1'
             }
         }
-        stage('Docker Push'){
+        /*stage('Docker Push'){
             steps{
                 sh 'echo $DOCKERHUB_CREDENTIALS_PWS | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push sunguyen88/petclinic:0.1'
