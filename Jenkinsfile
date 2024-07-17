@@ -47,11 +47,11 @@ pipeline {
                 sh 'docker push $DOCKERHUB_CREDENTIALS_USR/petclinic:latest'
             }
         }
-        /*stage('Trivy Scan'){
+        stage('Trivy Scan'){
             steps{
-                sh 'trivy image --scanners vuln sunguyen88/petclinic:latest'
+                sh 'trivy image --scanners vuln $DOCKERHUB_CREDENTIALS_USR/petclinic:latest'
             }
-        }*/
+        }
     }
     post{
         always{
