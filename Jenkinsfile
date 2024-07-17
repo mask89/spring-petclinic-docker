@@ -46,13 +46,12 @@ pipeline {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push sunguyen88/petclinic:latest'
             }
-            
         }
-        stage('Trivy Scan'){
+        /*stage('Trivy Scan'){
             steps{
                 sh 'trivy image --scanners vuln sunguyen88/petclinic:latest'
             }
-        }
+        }*/
     }
     post{
         always{
